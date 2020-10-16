@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Domain.Entities.Schools;
 using Domain.Entities.Schools.Interfaces;
 using Infra.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace Infra.Repositories
 {
@@ -17,27 +19,41 @@ namespace Infra.Repositories
 
         public List<School> GetAll()
         {
-            throw new NotImplementedException();
+            return _context.School.Include(x => x.Classes).ThenInclude(y => y.Students).ToList();
         }
 
         public School Get(string id)
         {
-            throw new NotImplementedException();
+            return _context.School.Include(x => x.Classes).ThenInclude(y => y.Students).FirstOrDefault(z => z.Id == id);
         }
 
-        public bool Create(School classe)
+        public bool Create(School school)
         {
-            throw new NotImplementedException();
+            _context.School.Add(school);
+
+            return _context.SaveChanges() == 1;
         }
 
-        public void Update(School classe)
+        public void Update(School school)
         {
-            throw new NotImplementedException();
+
+            _context.School.Update(school);
+
+            _context.SaveChanges();
         }
 
         public bool Delete(string id)
         {
-            throw new NotImplementedException();
+            var school = _context.School.Find(id);
+            
+            if (school == null)
+            {
+                return false;
+            }
+
+            _context.School.Remove(school);
+
+            return _context.SaveChanges() == 1;
         }
     }
 }

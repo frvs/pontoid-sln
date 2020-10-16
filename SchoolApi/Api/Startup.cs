@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Application.Services;
 using Domain.Entities.Classes.Interfaces;
+using Domain.Entities.LogExceptions.Interfaces;
 using Domain.Entities.Schools.Interfaces;
 using Domain.Entities.Students.Interfaces;
 using Infra.Data;
@@ -44,6 +45,9 @@ namespace Api
             services.AddTransient<IClassRepository, ClassRepository>();
             services.AddTransient<IStudentRepository, StudentRepository>();
             services.AddTransient<ISchoolRepository, SchoolRepository>();
+
+            services.AddTransient<ILogExceptionService, LogExceptionService>();
+            services.AddTransient<ILogExceptionRepository, LogExceptionRepository>();
             
             services.AddSwaggerGen();
         }
@@ -66,8 +70,11 @@ namespace Api
             app.UseSwagger();
 
             // Enable middleware to serve swagger-ui assets (HTML, JS, CSS etc.)
-            app.UseSwaggerUI();
-            
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "PontoID API");
+            });
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

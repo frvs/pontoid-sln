@@ -1,12 +1,20 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using Domain.Entities.Enums;
 using Domain.Entities.Students;
-using Domain.Entities.ValueObjects;
 
 namespace Domain.Entities.Classes
 {
-    public class Class : Entity
+    public class Class
     {
+        public Class()
+        {
+            Id = Guid.NewGuid().ToString();
+        }
+
+        [Key]
+        public string Id { get; set; }
         public string SchoolId { get; set; }
         public string Description { get; set; }
         

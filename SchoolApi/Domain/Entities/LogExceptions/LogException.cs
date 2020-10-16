@@ -1,11 +1,16 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace Domain.Entities.LogExceptions
 {
     public class LogException
     {
+        [Key]
+        public string Id { get; set; }
+
         public LogException()
         {
+            Id = Guid.NewGuid().ToString();
             Hour = DateTime.Now;
         }
 

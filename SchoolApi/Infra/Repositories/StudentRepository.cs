@@ -1,5 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Linq;
 using Domain.Entities.Students;
 using Domain.Entities.Students.Interfaces;
 using Infra.Data;
@@ -17,27 +17,40 @@ namespace Infra.Repositories
 
         public List<Student> GetAll()
         {
-            throw new NotImplementedException();
+            return _context.Student.ToList();
         }
 
         public Student Get(string id)
         {
-            throw new NotImplementedException();
+            return _context.Student.FirstOrDefault(x => x.Id == id);
         }
 
-        public bool Create(Student classe)
+        public bool Create(Student student)
         {
-            throw new NotImplementedException();
+            _context.Student.Add(student);
+
+            return _context.SaveChanges() == 1;
         }
 
-        public void Update(Student classe)
+        public void Update(Student student)
         {
-            throw new NotImplementedException();
+            _context.Student.Update(student);
+
+            _context.SaveChanges();
         }
 
         public bool Delete(string id)
         {
-            throw new NotImplementedException();
+            var student = _context.Student.Find(id);
+
+            if (student == null)
+            {
+                return false;
+            }
+
+            _context.Student.Remove(student);
+
+            return _context.SaveChanges() == 1;
         }
     }
 }
