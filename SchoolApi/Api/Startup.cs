@@ -1,16 +1,19 @@
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using Application.Services;
 using Domain.Entities.Classes.Interfaces;
 using Domain.Entities.Schools.Interfaces;
 using Domain.Entities.Students.Interfaces;
+using Infra.Data;
 using Infra.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -31,6 +34,8 @@ namespace Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
+            services.AddDbContext<DataContext>(options => options.UseInMemoryDatabase("c1"));
 
             services.AddTransient<IClassService, ClassService>();
             services.AddTransient<IStudentService, StudentService>();
