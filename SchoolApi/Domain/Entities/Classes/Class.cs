@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
 using Domain.Entities.Enums;
 using Domain.Entities.Students;
+using Domain.Entities.ValueObjects;
 
 namespace Domain.Entities.Classes
 {
-    public class Class
+    public class Class : Entity
     {
         public string Description { get; set; }
         
