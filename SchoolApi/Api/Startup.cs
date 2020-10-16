@@ -36,6 +36,7 @@ namespace Api
         {
             services.AddControllers();
 
+            //services.AddDbContext<DataContext>(options => options.UseSqlServer("Server=localhost;Database=pontoId;Integrated Security=True"));
             services.AddDbContext<DataContext>(options => options.UseInMemoryDatabase("c1"));
 
             services.AddTransient<IClassService, ClassService>();

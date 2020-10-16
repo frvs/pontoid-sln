@@ -1,8 +1,10 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Domain.Entities.Students
 {
+    [Table("dbo.Student")]
     public class Student
     {
         public Student()

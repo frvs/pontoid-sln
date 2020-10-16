@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using Domain.Entities.Enums;
 using Domain.Entities.Students;
 
 namespace Domain.Entities.Classes
 {
+    [Table("dbo.Class")]
     public class Class
     {
         public Class()
