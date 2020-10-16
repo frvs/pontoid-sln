@@ -1,5 +1,4 @@
 ﻿using System;
-using Api.Dtos;
 using Domain.Entities.Classes;
 using Domain.Entities.Classes.Interfaces;
 using Domain.Entities.LogExceptions.Interfaces;
@@ -51,12 +50,12 @@ namespace Api.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create([FromBody] CreateClassDto classDto)
+        public IActionResult Create([FromBody] Class classe)
         {
             try
             {
-                var response = _classService.Create(classDto.Class, classDto.SchoolId);
-                return Created(classDto.Class.Id, response);
+                var response = _classService.Create(classe);
+                return Created(classe.Id, response);
             }
             catch (Exception e)
             {

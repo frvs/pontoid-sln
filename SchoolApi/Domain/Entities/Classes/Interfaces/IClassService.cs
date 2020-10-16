@@ -8,8 +8,8 @@ namespace Domain.Entities.Classes.Interfaces
     public interface IClassService
     {
         List<Class> GetAll();
-        Student GetById(string id);
-        bool Create(Class classDtoClass, string classDtoSchoolId);
+        Class GetById(string id);
+        bool Create(Class classe);
         void Update(Class classe);
         bool Delete(string id);
     }
