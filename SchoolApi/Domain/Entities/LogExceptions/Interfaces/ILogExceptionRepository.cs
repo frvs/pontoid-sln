@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Domain.Entities.LogExceptions.Interfaces
+﻿namespace Domain.Entities.LogExceptions.Interfaces
 {
     public interface ILogExceptionRepository
     {
+        void LogException(LogException logException);
     }
 }

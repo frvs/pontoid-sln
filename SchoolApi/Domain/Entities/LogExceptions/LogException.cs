@@ -1,10 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Domain.Entities.LogExceptions
 {
-    class LogException
+    public class LogException
     {
+        public LogException()
+        {
+            Hour = DateTime.Now;
+        }
+
+        public string Message { get; set; }
+        public string Stack { get; set; }
+        public DateTime Hour { get; set; }
     }
 }

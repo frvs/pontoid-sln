@@ -1,4 +1,5 @@
 ﻿using Domain.Entities.Classes;
+using Domain.Entities.LogExceptions;
 using Domain.Entities.Schools;
 using Domain.Entities.Students;
 using Microsoft.EntityFrameworkCore;
@@ -14,8 +15,11 @@ namespace Infra.Data
         }
 
         public DbSet<Student> Student { get; set; }
+
         public DbSet<School> School { get; set; }
+        
         public DbSet<Class> Class { get; set; }
 
+        public DbSet<LogException> LogException { get; set; }
     }
 }

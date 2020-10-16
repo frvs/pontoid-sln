@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Domain.Entities.Students;
 using Domain.Entities.Students.Interfaces;
 
@@ -26,9 +25,9 @@ namespace Application.Services
             return student ?? new Student();
         }
 
-        public bool Create(Student student, string classId)
+        public bool Create(Student student)
         {
-            throw new NotImplementedException();
+            return _studentRepository.Create(student);
         }
 
         public void Update(Student student)
