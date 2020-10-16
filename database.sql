@@ -19,3 +19,10 @@ CREATE TABLE dbo.Student (
 	BirthDate datetime, 
 	Cpf varchar(11)
 )
+
+CREATE TABLE dbo.LogException (
+	Id varchar(50) PRIMARY KEY, 
+	Message varchar(max), 
+	Stack varchar(max), 
+	Hour datetime
+)
